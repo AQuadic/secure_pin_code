@@ -4,13 +4,21 @@ import './code_view.dart';
 import './custom_keyboard.dart';
 
 class SecurePinCode extends StatefulWidget {
-  /// Widget will be set as Title of Screen,
-  /// Required Widget!.
-  final Widget title;
+  /// Widget will be set as Title1 of Screen, has no effect if not given
+  /// Defaults to: [Null].
+  final Widget upperTitle;
 
-  /// Widget will be set as SubTitle of Screen,
-  /// Required Widget!.
-  final Widget subTitle;
+  /// Widget will be set as Title2 of Screen, has no effect if not given
+  /// Defaults to: [Null].
+  final Widget upperSubTitle;
+
+  /// Widget will be set as Title1 of Screen, has no effect if not given
+  /// Defaults to: [Null].
+  final Widget bottomTitle;
+
+  /// Widget will be set as Title2 of Screen, has no effect if not given
+  /// Defaults to: [Null].
+  final Widget bottomSubTitle;
 
   /// CorrectPin! used in on Full Pin Entered callback to call [onCodeSuccess]
   /// or [onCodeFails] callbacks
@@ -24,10 +32,6 @@ class SecurePinCode extends StatefulWidget {
   /// Callback called on Full Code Entered and Code doesn't matches [correctPin],
   /// Required CallBack/Function!.
   final Function onCodeFails;
-
-  /// String that will be printed in Error Section, has no effect if not given
-  /// Defaults to: [Null].
-  final Widget errorWidget;
 
   /// Length of Code/Boxes, this must match the [correctPin]
   /// Defaults to : 4
@@ -46,12 +50,13 @@ class SecurePinCode extends StatefulWidget {
 
   const SecurePinCode({
     Key key,
-    @required this.title,
-    @required this.subTitle,
+    this.upperTitle,
+    this.upperSubTitle,
+    this.bottomTitle,
+    this.bottomSubTitle,
     @required this.correctPin,
     @required this.onCodeSuccess,
     @required this.onCodeFails,
-    this.errorWidget,
     this.codeLength = 4,
     this.obscurePin = true,
     this.backgroundColor,
@@ -74,19 +79,26 @@ class SecurePinCodeState extends State<SecurePinCode> {
           Expanded(
             child: Column(
               children: <Widget>[
-                Expanded(flex: 2, child: Container()),
-                widget.title,
-                Expanded(flex: 1, child: Container()),
-                widget.subTitle,
-                Expanded(flex: 2, child: Container()),
+                if (widget.upperTitle != null) ...[
+                  Expanded(flex: 1, child: Container()),
+                  widget.upperTitle,
+                ],
+                if (widget.upperSubTitle != null) ...[
+                  Expanded(flex: 1, child: Container()),
+                  widget.upperSubTitle,
+                ],
                 CodeView(
                   code: enteredPinCode,
                   obscurePin: widget.obscurePin,
                   length: widget.codeLength,
                 ),
-                Expanded(flex: 1, child: Container()),
-                if (widget.errorWidget != null) ...[
-                  widget.errorWidget,
+                if (widget.bottomTitle != null) ...[
+                  Expanded(flex: 1, child: Container()),
+                  widget.bottomTitle,
+                ],
+                if (widget.bottomSubTitle != null) ...[
+                  Expanded(flex: 1, child: Container()),
+                  widget.bottomSubTitle,
                 ],
                 Expanded(flex: 2, child: Container()),
               ],

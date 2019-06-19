@@ -11,33 +11,33 @@ class _SecurePinCodeExampleState extends State<SecurePinCodeExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SecurePinCode(
+        upperTitle: Container(
+          color: Color(0xFF6D6DFF),
+          width: MediaQuery.of(context).size.width * 0.9,
+          child: Text("upperTitle"),
+        ),
+        upperSubTitle: Container(
+          color: Color(0xFF6D6DFF),
+          width: MediaQuery.of(context).size.width * 0.9,
+          child: Text("upperSubTitle"),
+        ),
+        bottomTitle: Container(
+          color: Color(0xFF6D6DFF),
+          width: MediaQuery.of(context).size.width * 0.9,
+          child: Text("bottomTitle"),
+        ),
+        bottomSubTitle: Container(
+          color: Color(0xFF6D6DFF),
+          width: MediaQuery.of(context).size.width * 0.9,
+          child: Text("bottomSubTitle"),
+        ),
         backgroundColor: Colors.black,
-        errorWidget: Text(
-          "this.error",
-          style: TextStyle(color: Colors.white),
-        ),
-        title: Text(
-          "المرحلة   9  |  8",
-          style: TextStyle(
-            color: Colors.white,
-          ),
-          textAlign: TextAlign.center,
-        ),
-        subTitle: Text(
-          "برجاء إدخال الرمز المكون من 4 أرقام",
-          style: TextStyle(
-            color: Colors.white,
-          ),
-          textAlign: TextAlign.center,
-        ),
         obscurePin: true,
         // to make pin * instead of number
         codeLength: 4,
         correctPin: "****",
         onCodeSuccess: (val) {},
-        onCodeFails: (val) {
-//        _savePinAndNav(val);
-        },
+        onCodeFails: (val) {},
       ),
     );
   }
