@@ -42,11 +42,15 @@ class SecurePinCode extends StatefulWidget {
   final bool obscurePin;
 
   /// Background Color of the Screen.
-  /// Defaults to : Theme.of(context).scaffoldBackgroundColor
+  /// Defaults to : Theme.of(context).scaffoldBackgroundColor.
   final Color backgroundColor;
 
-  /// [PinCodeKeyboard] buttons textStyle
+  /// [PinCodeKeyboard] buttons textStyle,
   final TextStyle keyboardTextStyle;
+
+  /// [PinCodeBoxes] buttons textStyle,
+  /// Defaults to : Colors.white24.
+  final Color underlineBorderColor;
 
   const SecurePinCode({
     Key key,
@@ -61,6 +65,7 @@ class SecurePinCode extends StatefulWidget {
     this.obscurePin = true,
     this.backgroundColor,
     this.keyboardTextStyle = const TextStyle(color: Colors.white),
+    this.underlineBorderColor = Colors.white24,
   }) : super(key: key);
 
   SecurePinCodeState createState() => SecurePinCodeState();
@@ -87,7 +92,8 @@ class SecurePinCodeState extends State<SecurePinCode> {
                   Expanded(flex: 1, child: Container()),
                   widget.upperSubTitle,
                 ],
-                CodeView(
+                PinCodeBoxes(
+                  underlineBorderColor: widget.underlineBorderColor,
                   code: enteredPinCode,
                   obscurePin: widget.obscurePin,
                   length: widget.codeLength,

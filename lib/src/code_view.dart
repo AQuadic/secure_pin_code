@@ -2,7 +2,7 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 
-class CodeView extends StatelessWidget {
+class PinCodeBoxes extends StatelessWidget {
   /// Given code to display in pin code boxes
   /// Required String.
   final String code;
@@ -24,16 +24,16 @@ class CodeView extends StatelessWidget {
   final Color boxColor;
 
   /// Underline of pin code box color
-  /// Defaults to : Colors.white.
+  /// Required Color!.
   final Color underlineBorderColor;
 
-  const CodeView({
+  const PinCodeBoxes({
     @required this.code,
     @required this.length,
     @required this.obscurePin,
     this.codeTextStyle = const TextStyle(color: Colors.white),
     this.boxColor = Colors.black12,
-    this.underlineBorderColor = Colors.white,
+    @required this.underlineBorderColor,
   });
 
   String getCodeAt(index) {
