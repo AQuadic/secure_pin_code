@@ -1,0 +1,20 @@
+name: secure_pin_code_example
+description: secure_pin_code
+version: 0.0.1+1
+
+environment:
+  sdk: ">=2.2.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+  secure_pin_code:
+    path: ../ # Relative Path
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
