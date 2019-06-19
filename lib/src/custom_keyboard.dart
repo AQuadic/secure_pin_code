@@ -14,14 +14,14 @@ class PinCodeKeyboard extends StatelessWidget {
   final TextStyle textStyle;
 
   /// Keyboard Buttons Style and Delete button color takes color from it,
-  /// Defaults to: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 15.0).
+  /// Required Padding.
   final EdgeInsets keyboardPadding;
 
   PinCodeKeyboard({
     @required this.onBackPressed,
     @required this.onPressedKey,
     @required this.textStyle,
-    this.keyboardPadding = const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 15.0),
+    @required this.keyboardPadding,
   });
 
   @override

@@ -48,9 +48,21 @@ class SecurePinCode extends StatefulWidget {
   /// [PinCodeKeyboard] buttons textStyle,
   final TextStyle keyboardTextStyle;
 
-  /// [PinCodeBoxes] buttons textStyle,
+  /// [PinCodeBoxes] Box underline Border Color,
   /// Defaults to : Colors.white24.
   final Color underlineBorderColor;
+
+  /// [PinCodeBoxes] PinCode TextStyle,
+  /// Defaults to : const TextStyle(color: Colors.white).
+  final TextStyle pinCodeTextStyle;
+
+  /// [PinCodeBoxes] Box Color,
+  /// Defaults to : Colors.black.
+  final Color pinCodeBoxColor;
+
+  /// [PinCodeKeyboard] Padding,
+  /// Defaults to : const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 15.0).
+  final EdgeInsets keyboardPadding;
 
   const SecurePinCode({
     Key key,
@@ -65,7 +77,10 @@ class SecurePinCode extends StatefulWidget {
     this.obscurePin = true,
     this.backgroundColor,
     this.keyboardTextStyle = const TextStyle(color: Colors.white),
+    this.pinCodeTextStyle = const TextStyle(color: Colors.white),
     this.underlineBorderColor = Colors.white24,
+    this.pinCodeBoxColor = Colors.black,
+    this.keyboardPadding = const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 15.0),
   }) : super(key: key);
 
   SecurePinCodeState createState() => SecurePinCodeState();
@@ -93,10 +108,12 @@ class SecurePinCodeState extends State<SecurePinCode> {
                   widget.upperSubTitle,
                 ],
                 PinCodeBoxes(
+                  codeTextStyle: widget.pinCodeTextStyle,
                   underlineBorderColor: widget.underlineBorderColor,
                   code: enteredPinCode,
                   obscurePin: widget.obscurePin,
                   length: widget.codeLength,
+                  boxColor: widget.pinCodeBoxColor,
                 ),
                 if (widget.bottomTitle != null) ...[
                   Expanded(flex: 1, child: Container()),
@@ -111,6 +128,7 @@ class SecurePinCodeState extends State<SecurePinCode> {
             ),
           ),
           PinCodeKeyboard(
+            keyboardPadding: widget.keyboardPadding,
             textStyle: widget.keyboardTextStyle,
             onPressedKey: (key) {
               if (enteredPinCode.length < widget.codeLength) {

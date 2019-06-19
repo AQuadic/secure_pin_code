@@ -16,11 +16,11 @@ class PinCodeBoxes extends StatelessWidget {
   final bool obscurePin;
 
   /// TextStyle to Code texts
-  /// Defaults to : const TextStyle(color: Colors.white).
+  /// Required TextStyle.
   final TextStyle codeTextStyle;
 
   /// PinCode box color,
-  /// Defaults to : Colors.black12.
+  /// Required Color.
   final Color boxColor;
 
   /// Underline of pin code box color
@@ -31,8 +31,8 @@ class PinCodeBoxes extends StatelessWidget {
     @required this.code,
     @required this.length,
     @required this.obscurePin,
-    this.codeTextStyle = const TextStyle(color: Colors.white),
-    this.boxColor = Colors.black12,
+    @required this.codeTextStyle,
+    @required this.boxColor,
     @required this.underlineBorderColor,
   });
 
